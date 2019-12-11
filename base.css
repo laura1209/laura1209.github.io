@@ -1,6 +1,4 @@
-/* IE 하위 버전 지원을 위해 */
-/* IE7에서는 css3를 지원X. So, 가상선택자(before & after) 사용-> :: 대신 : 사용함.
-*/
+/* IE 하위 버전 지원을 위해 add -ms prefix */
 
 /* init all tags */
 
@@ -64,6 +62,9 @@ animation: separator-width 2s ease-out forwards;
 body{
     background: rgb(255, 255, 255);  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom,  #eef1f3,rgb(255, 255, 255));  /* Chrome 10-25, Safari 5.1-6 */
+    background: -moz-linear-gradient(to bottom, #eef1f3,rgb(255, 255, 255));
+    background: -ms-linear-gradient(to bottom,  #eef1f3,rgb(255, 255, 255));
+    background: -o-linear-gradient(to bottom,  #eef1f3,rgb(255, 255, 255));
     background: linear-gradient(to bottom, #eef1f3,rgb(255, 255, 255)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: 'Sunflower', sans-serif;
 }
@@ -196,20 +197,21 @@ margin-right: 2.5%;
 }
 
 /* 디스플레이 */
-.display-section, .about-section{
+.display-section{
     margin-top: 60px;
     text-align: center;
 }
-.display-section .title-tag, .about-section .title-tag {
+.display-section .title-tag {
     margin-bottom: 15px;
 }
-.display-section .info, .about-section .info {
+.display-section .info {
     color: #568AFA;
     line-height: 1.5;
-    margin-bottom: 50px;
-
 }
-
+.display-section>h2 {
+    text-align: center;
+    margin-bottom: 60px;
+}
 /* 프로모션 부분 */
 
 .promotion-section {
@@ -246,7 +248,6 @@ margin-right: 2.5%;
     font-size: 1rem;
     line-height:1.5;
 }
-
 /* 온도 부분 */
 
 
@@ -260,7 +261,7 @@ margin-right: 2.5%;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height:180px;
+    height:200px;
 }
 
 .ct-btn {
@@ -271,17 +272,17 @@ margin-right: 2.5%;
     display: -ms-flexbox;
     display: flex;
     cursor: pointer;
-    margin:10px;
+    margin:30px;
 }
 
 
-.tem-btn {
-    font-size: 50px;
-    line-height: 80px;
-    width: 80px;
-    height: 80px;
+button {
+    font-size: 30px;
+    line-height: 100px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    transform: translate(-50, -50);
+    /* transform: translate(-50%, -50%); */
     cursor:pointer;
     font-family: lato;
 }
@@ -331,6 +332,18 @@ margin-right: 2.5%;
     -webkit-background-clip: text;
     animation: animate 15s linear infinite;
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* style code just for IE */
+    .liquid h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 7em;
+    color: rgb(79, 191, 199);
+    background-image: url();
+    }
+}
+
 @keyframes animate
 {
     0%
@@ -352,29 +365,29 @@ margin-right: 2.5%;
 }
 
     /* 그래프 */
-    .graph-section {
-        margin-top: 68px;
-    }
-    
-    .promotion-section .graph-list li{
-        margin-top:52px;
-        text-align:center;
-    }
-    
-    .graph-section .graph-list li:first-child{
-        margin-top:0;
-    }
+.graph-section {
+    margin-top: 68px;
+}
+
+.promotion-section .graph-list li{
+    margin-top:52px;
+    text-align:center;
+}
+
+.graph-section .graph-list li:first-child{
+    margin-top:0;
+}
 .graph-section .graph-list li h3{
-        margin:25px 0 20px 0;
-        text-align:center;
-        color:#010e58;
-        font-weight:normal;
-    }
-/* iphone5 : 320px(패딩,마진 제외:288px) */
+    margin:25px 0 20px 0;
+    text-align:center;
+    color:#010e58;
+    font-weight:normal;
+}
+
 iframe {
     width: 288px;
     max-width:330px;
-    height: 260px;
+    height: 265px;
 }
 
 /* 푸터 영역 */
@@ -438,17 +451,60 @@ display:none !important;
 }
 
 /* T 디스플레이 */
-.display-section{
-    margin-top: 70px;
+
+.grid-wrapper {
+
+display: -ms-grid;
+display: grid;
+-webkit-grid-columns: 40% 50%;
+-webkit-grid-rows: 100px 70px;
+-ms-grid-columns: 40% 50%;
+-ms-grid-rows: 100px 70px;
+grid-template-columns: 40% 50%;
+grid-template-rows: 100px 70px;
 }
-.about-section{
-    margin-top: 70px;
+
+
+.top-left {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -webkit-grid-column: 1;
+    -webkit-grid-row: 1;
+
+}  
+.top-right {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -webkit-grid-column: 2;
+    -webkit-grid-row: 1;
 }
+
+
+.h2R {
+    width:90%;
+    margin : 0 5% 0 5%;
+    text-align : center;
+    margin-bottom: 50px;
+}
+
+.grid1 {
+    text-align: left;
+}
+.grid2 {
+    text-align: left;
+    padding-left: 20px;
+    border-left: solid #bada55;
+}
+
+
+
+
 
 /* 프로모션 영역 */
 
 .promotion-section {
     margin-top: 110px;
+    text-align: center;
 }
 
 .promotion-section .promo-list li{
@@ -473,7 +529,7 @@ display:none !important;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height:180px;
+    height:160px;
 }
 
 .ct-btn {
@@ -489,14 +545,15 @@ display:none !important;
 
 
 button {
-    font-size: 50px;
-    line-height: 130px;
-    width: 130px;
-    height: 130px;
+    font-size: 150px;
+    line-height: 150px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     transform: translate(-50, -50);
     cursor:pointer;
     font-family: lato;
+
 }
 @keyframes heartBit {
     0%, 30% {-webkit-box-shadow: 0px 0px 30px 10px #ff5a5a;box-shadow: 0px 0px 30px 10px #ff5a5a;}
@@ -543,7 +600,8 @@ button {
 
 iframe {
     width: 330px;
-    max-width:442.37px; height:260px;
+    max-width:442.37px;
+    height:265px;
 
 }
 
@@ -553,37 +611,15 @@ iframe {
 
 }
 
+
+
+
 /* PC */
 
 
-@media all and (min-width: 1280px){
+@media all and (min-width: 1190px){
+ 
 
-
-.display-section, .about-section{
-    text-align: left;
-}
-
-.display-section .title-tag, .about-section .title-tag {
-    float: left;
-
-}
-.display-section .info, .about-section .info {
-    position: relative;
-    float: right;
-    padding-left: 20px;
-    color: #568AFA;
-}
-
-.display-section .info:before, .about-section .info:before{
-    display:block;
-    position:absolute;
-    top:9px;
-    left:0;
-    width:2px;
-    height:44px;
-    background:#98D874;
-    content:"";
-    } 
 
 .promotion-section{
     margin-top: 150px;
@@ -595,6 +631,17 @@ iframe {
 
 }
 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* style code just for IE */
+    .liquid h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 7em;
+    background-image: url();
+    color: rgb(79, 191, 199);
+    }
+
+}
 @keyframes animate
 {
     0%
@@ -615,6 +662,54 @@ iframe {
     }
 }
 
+.grid-wrapper {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 40% 50%;
+    -ms-grid-rows: 100px 70px;
+    grid-template-columns: 40% 50%;
+    grid-template-rows: 100px 70px;
+    }
+    
+    
+    .top-left {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+    }  
+    .top-right {
+        -ms-grid-column: 2;
+        -ms-grid-row: 1;
+    }
+    .bottom-left {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+    }
+    
+    .bottom-right {
+        -ms-grid-column: 2;
+        -ms-grid-row: 2;
+    }
+    
+    .display-section>h2 {
+        width:90%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .grid1 {
+        text-align: left;
+    }
+    .grid2 {
+        text-align: left;
+        padding-left: 20px;
+        border-left: solid #bada55;
+    }
+    /* .grid2 {
+        border-left: solid #bada55;
+    } */
+
+    
+    
+
 /* 그래프 */
 
 .graph-section{
@@ -633,7 +728,7 @@ iframe {
 iframe {
     width: 460px;
     min-width: 460px;
-    height:260px;
+    height:265px;
 }
 /* 푸터 */
 .footer {
